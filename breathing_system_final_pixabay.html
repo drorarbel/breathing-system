@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מערכת הנשימה המדהימה שלנו!</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f8ff;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-color: #00bfff;
+      padding: 20px;
+      color: white;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .comparison {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .comparison img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border: 4px solid #ccc;
+      border-radius: 10px;
+    }
+    .sliders {
+      margin-top: 20px;
+      max-width: 400px;
+      margin-inline: auto;
+      text-align: right;
+    }
+    .sliders label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .lungs-image {
+      width: 100px;
+      transition: all 0.5s ease;
+      margin: 20px auto;
+      animation: breathe 2s infinite ease-in-out;
+    }
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    footer {
+      background: #e0f7fa;
+      padding: 20px;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      section {
+        padding: 20px 10px;
+      }
+      .comparison {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>מערכת הנשימה המדהימה שלנו!</h1>
+    <p>בואו נגלה איך הריאות שלנו עובדות!</p>
+  </header>
+
+  <section>
+    <h2>🫁 מערכת הנשימה</h2>
+    <img src="https://cdn.pixabay.com/photo/2021/02/16/11/20/lungs-6020208_1280.png" alt="תרשים מערכת הנשימה" width="300">
+  </section>
+
+  <section>
+    <h2>🚭 ריאות בריאות לעומת ריאות של מעשן</h2>
+    <div class="comparison">
+      <div>
+        <h3>ריאות בריאות</h3>
+        <img src="https://cdn.pixabay.com/photo/2020/05/26/11/42/lungs-5222720_1280.jpg" alt="ריאות בריאות">
+      </div>
+      <div>
+        <h3>ריאות של מעשן</h3>
+        <img src="https://cdn.pixabay.com/photo/2020/09/28/17/47/lungs-5610760_1280.jpg" alt="ריאות של מעשן">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎛️ נסו בעצמכם!</h2>
+    <div class="sliders">
+      <label for="exercise">רמת פעילות גופנית</label>
+      <input type="range" id="exercise" min="0" max="10">
+
+      <label for="air">איכות האוויר</label>
+      <input type="range" id="air" min="0" max="10">
+    </div>
+    <img id="lungs" class="lungs-image" src="https://cdn.pixabay.com/photo/2021/01/24/12/10/lungs-5945224_1280.png" alt="ריאות">
+  </section>
+
+  <section>
+    <h2>💡 עובדות מעניינות</h2>
+    <ul style="text-align: right; max-width: 600px; margin: auto;">
+      <li>הריאות שלך מתמלאות באוויר כ-20,000 פעמים ביום!</li>
+      <li>עישון פוגע בשקיות האוויר הקטנות שבריאות.</li>
+      <li>פעילות גופנית עוזרת לריאות לעבוד טוב יותר!</li>
+    </ul>
+  </section>
+
+  <footer>
+    נבנה באהבה על ידי ילדי כיתה ה בנוף צורים
+  </footer>
+
+  <script>
+    const exerciseSlider = document.getElementById('exercise');
+    const airSlider = document.getElementById('air');
+    const lungs = document.getElementById('lungs');
+
+    function updateLungs() {
+      const exercise = parseInt(exerciseSlider.value);
+      const air = parseInt(airSlider.value);
+      const size = 100 + exercise * 5;
+      const opacity = 0.5 + air * 0.05;
+      lungs.style.width = size + 'px';
+      lungs.style.opacity = opacity;
+    }
+
+    exerciseSlider.addEventListener('input', updateLungs);
+    airSlider.addEventListener('input', updateLungs);
+    updateLungs();
+  </script>
+</body>
+</html>
